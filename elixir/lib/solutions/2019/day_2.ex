@@ -32,8 +32,8 @@ defmodule Aoe.Y19.Day2 do
   end
 
   def part_two(map) do
-    list = 
-      for n <- 0..99, v <- 0..99 do 
+    list =
+      for n <- 0..99, v <- 0..99 do
         {n, v}
       end
 
