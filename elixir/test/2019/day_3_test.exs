@@ -23,29 +23,28 @@ defmodule Aoe.Y19.Day3Test do
   Data file
   """
 
-  describe "Test move in direction" do 
-    test "Move Right" do 
+  describe "Test move in direction" do
+    test "Move Right" do
       starting_point = {0, 0}
       direction = {:right, 3}
       ending_point = {3, 0}
 
       result = Solution.move_in_direction(starting_point, direction)
 
-      expected = {{3, 0}, [{0,0}, {1, 0}, {2, 0}, {3, 0}]}
+      expected = {{3, 0}, [{0, 0}, {1, 0}, {2, 0}, {3, 0}]}
 
       assert expected == result
 
       result = Solution.move_in_direction(ending_point, {:up, 3})
 
-      expected = { {3, 3}, [{3, 0}, {3, 1}, {3, 2}, {3, 3}] }
+      expected = {{3, 3}, [{3, 0}, {3, 1}, {3, 2}, {3, 3}]}
 
       assert result == expected
-
     end
   end
 
-  describe "Test get_path_points" do 
-    test "test - 1" do 
+  describe "Test get_path_points" do
+    test "test - 1" do
       paths = [{:right, 3}, {:up, 3}]
 
       result = Solution.get_path_points(paths)

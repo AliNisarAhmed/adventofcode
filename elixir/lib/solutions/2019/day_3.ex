@@ -31,7 +31,7 @@ defmodule Aoe.Y19.Day3 do
       get_path_points(list1)
       |> MapSet.new()
 
-   path_points_2 =
+    path_points_2 =
       get_path_points(list2)
       |> MapSet.new()
 
