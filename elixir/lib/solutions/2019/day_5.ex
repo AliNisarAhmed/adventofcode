@@ -43,7 +43,7 @@ defmodule Aoe.Y19.Day5 do
   end
 
   def part_two(map) do
-    map 
+    map
     |> unfold(0, &execute_opcode/2)
   end
 
