@@ -32,10 +32,19 @@ defmodule Aoe.Y21.Day1 do
         end
       end
     )
+
+    # problem 
+    # |> Enum.chunk_every(2, 1, :discard)
+    # |> Enum.count(fn [left, right] -> right > left end)
   end
 
   def part_two(problem) do
     sumWindow(problem, Enum.drop(problem, 1), 0)
+
+    # problem 
+    # |> Enum.chunk_every(3, 1, :discard) 
+    # |> Enum.chunk_every(2, 1, :discard)
+    # |> Enum.count(fn [[left, m1, m2], [m1, m2, right]] -> right > left end)
   end
 
   def sumWindow([x1, y1, z1 | rest1], [x2, y2, z2 | rest2], acc) do
