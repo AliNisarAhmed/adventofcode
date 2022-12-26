@@ -21,7 +21,8 @@ defmodule Aoe.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:httpoison, "~> 1.7"}
+      {:httpoison, "~> 1.7"},
+      {:nimble_parsec, "~> 1.0"}
     ]
   end
 end
