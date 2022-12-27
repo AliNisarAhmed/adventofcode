@@ -5,7 +5,7 @@ defmodule Aoe.Y22.Day1 do
   @type file :: input_path | %Aoe.Input.FakeFile{}
   @type part :: :part_one | :part_two
   @type input :: binary | File.Stream.t()
-  @type problem :: any
+  @type problem :: Enum.t(number())
 
   @spec read_file!(file, part) :: input
   def read_file!(file, _part) do
@@ -16,7 +16,7 @@ defmodule Aoe.Y22.Day1 do
     |> File.read!()
   end
 
-  @spec parse_input!(input, part) :: problem
+  @spec parse_input!(input, part) :: Stream.t(number())
   def parse_input!(input, _part) do
     input
     |> String.split("\n\n")

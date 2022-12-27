@@ -5,7 +5,9 @@ defmodule Aoe.Y22.Day5 do
   @type file :: input_path | %Aoe.Input.FakeFile{}
   @type part :: :part_one | :part_two
   @type input :: binary | File.Stream.t()
-  @type problem :: any
+  @type problem :: {stack(), instruction()}
+  @type stack :: %{number() => Enum.t(String.t())}
+  @type instruction :: Enum.t(number())
 
   @spec read_file!(file, part) :: input
   def read_file!(file, _part) do
