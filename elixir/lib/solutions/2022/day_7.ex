@@ -198,7 +198,7 @@ defmodule Aoe.Y22.Day7 do
 
   @spec parse_command(str :: String.t()) :: output()
   def parse_command(str) do
-    case Parser.command_parser(str) do
+    case Aoe.Y22.Day7.Parser.command_parser(str) do
       {:ok, [cd: [dir_name]], _, _, _, _} ->
         {:cd, dir_name}
 
@@ -216,7 +216,7 @@ end
 
 # ---------------- Parser -------------------
 
-defmodule Parser do
+defmodule Aoe.Y22.Day7.Parser do
   import NimbleParsec
 
   @uppercase ?A..?Z

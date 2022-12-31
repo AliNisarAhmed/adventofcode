@@ -84,13 +84,13 @@ defmodule Aoe.Y22.Day5 do
   end
 
   defp parse_instruction(s) do
-    {:ok, list, _, _, _, _} = Parser.parse_instruction(s)
+    {:ok, list, _, _, _, _} = Aoe.Y22.Day5.Parser.parse_instruction(s)
 
     list
   end
 
   defp parse_stack(s) do
-    {:ok, list, _, _, _, _} = Parser.parse_stack(s)
+    {:ok, list, _, _, _, _} = Aoe.Y22.Day5.Parser.parse_stack(s)
 
     list
   end
@@ -114,7 +114,7 @@ end
 
 # ------------- Parsers -------------------
 
-defmodule Parser do
+defmodule Aoe.Y22.Day5.Parser do
   import NimbleParsec
 
   parse_instruction =
