@@ -12,6 +12,8 @@ defmodule Mix.Tasks.Aoe.Create do
 
     ensure_solution_module(year, day)
     ensure_test(year, day)
+    ensure_alias(year, day)
+
     Mix.Task.run("format")
     Mix.Task.run("compile")
 
@@ -26,6 +28,15 @@ defmodule Mix.Tasks.Aoe.Create do
     end
 
     Mix.Shell.IO.info("Done.")
+  end
+
+  defp ensure_alias(year, day) do
+    module_dir = Path.join([@app_dir])
+    module_path = Path.join(module_dir, ".iex.exs")
+
+    content = "alias #{Enum.join(["Aoe", "Y#{year - 2000}", "Day#{day}"], ".")}"
+
+    File.write!(module_path, content, [:append])
   end
 
   defp ensure_solution_module(year, day) do
