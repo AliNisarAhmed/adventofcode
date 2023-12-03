@@ -8,13 +8,32 @@ use std::{
 mod solutions;
 
 use clap::{Parser, Subcommand, ValueEnum};
+use solutions::year2023::day1;
 
 type MyResult<T> = Result<T, Box<dyn Error>>;
 
-pub fn run_solution() {
-    // execute solution here
-    // dbg!(day13::part_one(String::from("abc")));
+pub fn run_solution(year: u32, day: u32, part: u32, test: bool) {
+    let input = get_input(year, day, part, test);
+    
+    // RUN YOUR FUNCTION HERE
+    dbg!(day1::part_two(input));
+}
 
+fn get_input(year: u32, day: u32, part: u32, test: bool) -> String {
+    let year_file_name = format!("year{}", year);
+    let day_file_name = format!("day{}", day);
+    let text_file_name = if !test {
+        String::from("input")
+    } else {
+        format!("sample{}", part)
+    };
+
+    let input_file = format!(
+        "./src/solutions/{}/{}/{}.txt",
+        year_file_name, day_file_name, text_file_name
+    );
+
+    fs::read_to_string(input_file).unwrap()
 }
 
 // -------------------------------------------------------------------------------------
@@ -46,7 +65,16 @@ enum Commands {
         #[arg(short = 'd', long)]
         day: u32,
     },
-    Run,
+    Run {
+        #[arg(short = 'y', long)]
+        year: u32,
+        #[arg(short = 'd', long)]
+        day: u32,
+        #[arg(short = 'p', long)]
+        part: u32,
+        #[arg(short, long, default_value_t = false)]
+        test: bool,
+    },
 }
 
 pub fn get_args() -> MyResult<Config> {
@@ -63,7 +91,12 @@ pub fn run(config: Config) -> MyResult<()> {
     match config.command {
         None => {}
         Some(Commands::Create { year, day }) => create(year, day, &secret)?,
-        Some(Commands::Run) => run_solution(),
+        Some(Commands::Run {
+            year,
+            day,
+            part,
+            test,
+        }) => run_solution(year, day, part, test),
     }
 
     Ok(())
