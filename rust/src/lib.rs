@@ -4,7 +4,7 @@ mod aoc;
 mod solutions;
 
 use clap::{Parser, Subcommand, ValueEnum};
-use solutions::year2023::day1;
+use crate::solutions::year2023::day2;
 
 type MyResult<T> = Result<T, Box<dyn Error>>;
 
@@ -12,7 +12,8 @@ pub fn run_solution(year: u32, day: u32, part: u32, test: bool) {
     let input = aoc::get_input(year, day, part, test);
 
     // RUN SOLUTION FUNCTION HERE
-    dbg!(day1::part_two(input));
+    // dbg!(day1::part_two(input));
+    dbg!(day2::part_two(input));
 }
 
 // -------------------------------------------------------------------------------------
